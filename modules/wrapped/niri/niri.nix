@@ -34,6 +34,9 @@
         # };
 
         settings = {
+          xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
+          
+
           prefer-no-csd = true;
 
           input = {

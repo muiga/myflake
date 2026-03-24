@@ -15,9 +15,14 @@
         };
       };
 
-      services.udev.packages = with pkgs; [ libusb1 ];
+      services.udev.packages = with pkgs; [
+        libusb1
+        brightnessctl
+      ];
       services.fprintd.enable = true;
       services.fwupd.enable = true;
+      services.tuned.enable = true;
+      services.upower.enable = true;
       # services.blueman.enable = true;
     };
 }
