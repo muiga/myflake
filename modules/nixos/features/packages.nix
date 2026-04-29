@@ -69,6 +69,7 @@
         nil
         nixd
         pywalfox-native
+        cloudflare-warp
       ];
 
       environment.shells = with pkgs; [ zsh ];

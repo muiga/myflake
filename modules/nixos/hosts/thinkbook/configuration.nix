@@ -19,6 +19,7 @@
         self.nixosModules.virtualisation
         self.nixosModules.niri
         self.nixosModules.zsh
+        self.nixosModules.backlight
       ];
 
       networking.hostName = "thinkbook"; # Define your hostname.
@@ -63,9 +64,11 @@
 
       # Install firefox.
       programs.firefox.enable = true;
-
+      services.cloudflare-warp = {
+        enable = true;
+      };
       security.pki.certificateFiles = [
-        /home/muiga/.local/share/mkcert/rootCA.pem
+        ./certs/rootCA.pem
       ];
 
     };
