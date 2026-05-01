@@ -14,17 +14,19 @@
         pulse.enable = true;
         jack.enable = true;
         wireplumber.enable = true;
-
-        extraConfig = {
-          pipewire."10-no-suspend" = {
-            "context.properties" = {
-              "suspend-timeout-seconds" = 0;
-            };
-          };
-          pipewire-pulse."bluetooth-policy" = {
-            "bluez5.roles" = [ "a2dp_sink" ];
-          };
-        };
       };
+
+      # Add this WirePlumber drop-in
+      environment.etc."wireplumber/bluetooth.lua.d/50-bluez-suspend-on-idle.lua".text = ''
+        -- Force suspend idle Bluetooth sinks after 3 seconds
+        bluez_monitor.properties = {
+          ["node.latency"] = 512,
+          ["node.nick"] = "ALSA",
+          ["node.description"] = "Bluetooth Audio",
+          ["priority.session"] = 1000,
+          ["node.pause-on-idle"] = true,  -- Key: allow suspension
+          ["session.suspend-timeout-seconds"] = 3, -- Drop idle sink after 3 seconds
+        }
+      '';
     };
 }

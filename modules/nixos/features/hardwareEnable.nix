@@ -4,7 +4,18 @@
     { pkgs, ... }:
     {
       hardware = {
-        bluetooth.enable = true;
+        bluetooth = {
+          enable = true;
+          powerOnBoot = true;
+          settings = {
+            General = {
+              Enable = "Source,Sink,Media,Socket";
+              FastConnectable = true;
+              MultiProfile = "multiple";
+              Experimental = true;
+            };
+          };
+        };
         graphics = {
           enable = true;
           extraPackages = with pkgs; [
@@ -24,5 +35,18 @@
       services.tuned.enable = true;
       services.upower.enable = true;
       # services.blueman.enable = true;
+      #
+      systemd.user.services.mpris-proxy = {
+        description = "Mpris proxy";
+        after = [
+          "network.target"
+          "sound.target"
+        ];
+        wantedBy = [ "default.target" ];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
+        };
+      };
     };
 }
