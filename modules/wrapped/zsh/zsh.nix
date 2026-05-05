@@ -5,6 +5,7 @@
     let
       myAliases = {
         rebuild = "sudo nixos-rebuild switch --flake ~/flakeparts";
+        upgrade = "cd ~/flakeparts && nix flake update && cd && sudo nixos-rebuild switch --flake ~/flakeparts";
         clean-home = "nix-collect-garbage -d";
         clean-system = "sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
         connect-contabo-mine = "ssh root@45.159.222.167";
