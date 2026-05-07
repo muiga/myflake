@@ -13,6 +13,7 @@
               FastConnectable = true;
               MultiProfile = "multiple";
               Experimental = true;
+              ControllerMode = "dual";
             };
           };
         };

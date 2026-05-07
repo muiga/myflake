@@ -70,6 +70,8 @@
         nixd
         pywalfox-native
         cloudflare-warp
+        anydesk
+        rustdesk
       ];
 
       environment.shells = with pkgs; [ zsh ];
