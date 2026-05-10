@@ -1,16 +1,17 @@
-{ ... }:
+{ inputs, ... }:
 {
   flake.nixosModules.flatpak =
     { ... }:
     {
+      # import any other modules from here
+      imports = [
+        inputs.nix-flatpak.nixosModules.nix-flatpak
+      ];
+
       services.flatpak.remotes = [
         {
           name = "flathub";
           location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-        }
-        {
-          name = "cosmic";
-          location = "https://apt.pop-os.org/cosmic/cosmic.flatpakrepo";
         }
       ];
 

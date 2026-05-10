@@ -23,7 +23,7 @@
       url = "github:numtide/nixpkgs-unfree";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
   };
 
