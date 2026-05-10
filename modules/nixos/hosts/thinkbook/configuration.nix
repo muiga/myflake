@@ -20,6 +20,7 @@
         self.nixosModules.niri
         self.nixosModules.zsh
         self.nixosModules.backlight
+        self.nixosModules.flatpak
       ];
 
       networking.hostName = "thinkbook"; # Define your hostname.
