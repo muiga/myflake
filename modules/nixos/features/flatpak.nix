@@ -8,6 +8,8 @@
         inputs.nix-flatpak.nixosModules.nix-flatpak
       ];
 
+      services.flatpak.enable = true;
+
       services.flatpak.remotes = [
         {
           name = "flathub";
